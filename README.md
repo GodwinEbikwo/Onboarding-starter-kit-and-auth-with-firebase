@@ -15,7 +15,7 @@ Tech stack used in this project:
 
 Please feel free to do with it whatever you will. MIT license and all of that. if you kinda like it a star could go a long way.
 
-##How to use
+## How to use
 
 - Fork it and then you can replace your firebase credentials to the one in the config.js file located in the authentication folder.
 - To change the texts,check the config file as well and change, text, background-color and image.
