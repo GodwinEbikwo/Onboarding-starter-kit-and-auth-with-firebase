@@ -4,19 +4,18 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 
 interface labelprops {
-  label?: string | undefined;
+  label?: string;
   onPress?: () => void;
 }
 
 function Button({ label, onPress }: labelprops) {
   return (
-    <TouchableOpacity
+    <RectButton
       style={[styles.button, { backgroundColor: "#161616" }]}
-      activeOpacity={0.9}
-      onPress={onPress}
+      {...{ onPress }}
     >
       <Text style={styles.buttonText}>{label}</Text>
-    </TouchableOpacity>
+    </RectButton>
   );
 }
 
@@ -28,17 +27,17 @@ export default function FormButton({ label }: labelprops) {
 
 const styles = StyleSheet.create({
   button: {
-    marginVertical: 15,
-    borderRadius: 10,
+    margin: 15,
+    height: 50,
+    width: 240,
+    borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",
-    padding: 15,
-    width: "100%",
   },
   buttonText: {
     color: "#fff",
-    fontSize: 18,
-    fontWeight: "600",
-    textTransform: "uppercase",
+    fontSize: 15,
+    textAlign: "center",
+    fontFamily: "Medium",
   },
 });

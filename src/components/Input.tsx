@@ -49,7 +49,7 @@ export default function Input({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: lightGrey,
-    borderRadius: 5,
+    borderRadius: 1,
     flexDirection: "row",
     padding: 15,
     marginVertical: 10,
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     width: "100%",
     fontSize: 17,
     color: "#333",
+    fontFamily: "Regular",
   },
   rightIconStyles: {
     position: "absolute",

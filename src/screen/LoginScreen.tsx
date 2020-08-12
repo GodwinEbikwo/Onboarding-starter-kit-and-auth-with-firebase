@@ -11,6 +11,7 @@ import IconButton from "../components/IconButton";
 
 import { loginWithEmail } from "../Authentication/Firebase/firebase";
 import ErrorMessage from "../Authentication/Form/ErrorMessage";
+import { AntDesign, FontAwesome, Ionicons } from "@expo/vector-icons";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -49,12 +50,26 @@ export default function LoginScreen({ navigation }: any) {
   }
 
   return (
-    <Wrapper style={styles.container}>
-      <View style={{ marginBottom: 20, paddingTop: 20 }}>
-        <Text style={{ fontSize: 30, fontWeight: "600", color: "#333" }}>
-          Login to your account
+    <Wrapper style={styles.container} footer={<Social />}>
+      <View style={{ marginBottom: 20, paddingTop: 40 }}>
+        <Text
+          style={{
+            fontSize: 30,
+            fontWeight: "600",
+            color: "#333",
+            fontFamily: "Bold",
+          }}
+        >
+          Welcome Back
         </Text>
-        <Text style={{ fontSize: 15, marginTop: 10, color: "grey" }}>
+        <Text
+          style={{
+            fontSize: 15,
+            marginTop: 10,
+            color: "grey",
+            fontFamily: "Regular",
+          }}
+        >
           Glad to have you back
         </Text>
       </View>
@@ -70,7 +85,7 @@ export default function LoginScreen({ navigation }: any) {
           autoCapitalize="none"
           keyboardType="email-address"
           textContentType="emailAddress"
-          autoFocus={true}
+          autoFocus={false}
         />
         <Field
           name="password"
@@ -83,24 +98,29 @@ export default function LoginScreen({ navigation }: any) {
           rightIcon={rightIcon}
           handlePasswordVisibility={handlePasswordVisibility}
         />
-        <View style={{ marginHorizontal: 20 }}>
-          <FormButton label={"login"} />
+
+        <View style={styles.footerButtonContainer}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("ForgotPassword")}
+          >
+            <Text style={styles.forgotPasswordButtonText}>
+              Forgot Password?
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("ForgotPassword")}
+          >
+            <Text style={styles.forgotPasswordButtonText}>Remeber me?</Text>
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{ justifyContent: "center", alignItems: "center", margin: 40 }}
+        >
+          <FormButton label={"login to your account"} />
         </View>
 
         {<ErrorMessage error={loginError} visible={true} />}
       </Form>
-      <View style={styles.footerButtonContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("ForgotPassword")}>
-          <Text style={styles.forgotPasswordButtonText}>Forgot Password?</Text>
-        </TouchableOpacity>
-      </View>
-      <IconButton
-        style={styles.backButton}
-        iconName="keyboard-backspace"
-        color="#fff"
-        size={30}
-        onPress={() => navigation.goBack()}
-      />
     </Wrapper>
   );
 }
@@ -111,17 +131,72 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   footerButtonContainer: {
-    marginVertical: 15,
-    justifyContent: "center",
+    marginTop: 20,
+    justifyContent: "space-between",
     alignItems: "center",
+    flexDirection: "row",
   },
   forgotPasswordButtonText: {
-    color: "#161616",
-    fontSize: 18,
-    fontWeight: "500",
+    color: "grey",
+    fontSize: 15,
+    fontFamily: "Medium",
   },
   backButton: {
     justifyContent: "center",
     alignItems: "center",
   },
+  iconBg: {
+    backgroundColor: "rgba(12, 13, 53, 0.05)",
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 15,
+  },
 });
+
+function Social() {
+  return (
+    <View
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 10,
+      }}
+    >
+      <View
+        style={{
+          margin: 14,
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <TouchableOpacity
+          style={styles.iconBg}
+          onPress={() => alert("not implemented yet ")}
+        >
+          <AntDesign name="google" size={24} color="black" />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.iconBg}
+          onPress={() => alert("not implemented yet ")}
+        >
+          <FontAwesome name="facebook" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.iconBg}
+          onPress={() => alert("not implemented yet ")}
+        >
+          <Ionicons name="logo-apple" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+
+      <Text style={{ fontFamily: "Regular", color: "#111f4d" }}>
+        Don't have an account? sign up here
+      </Text>
+    </View>
+  );
+}

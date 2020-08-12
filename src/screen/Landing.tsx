@@ -5,14 +5,14 @@ import { interpolateColor, useScrollHandler } from "react-native-redash";
 import Animated, { multiply, divide } from "react-native-reanimated";
 import Dot from "../screen/Dot";
 import Subslide from "../screen/Subslide";
-import { StackNavigationProp } from "../components/Navigation";
+import { StackNavigationProps, Routes } from "../components/Navigation";
 
 const { width, height } = Dimensions.get("window");
 const slides = [
   {
     title: "Relaxed",
     image:
-      "https://res.cloudinary.com/dqv9mfbvt/image/upload/v1594807971/pixeltrue-icons-receipt-1_kvqba7.png",
+      "https://res.cloudinary.com/dqv9mfbvt/image/upload/v1596790785/marginalia-productive-work_dzm3tg.png",
     subtitle: "Find your Outfits",
     description:
       "Confused about your outfit? Don't worry! Find the best outfits here",
@@ -21,16 +21,16 @@ const slides = [
   {
     title: "Playful",
     image:
-      "https://res.cloudinary.com/dqv9mfbvt/image/upload/v1594808362/pixeltrue-icons-web-design-1_ahom2x.png",
+      "https://res.cloudinary.com/dqv9mfbvt/image/upload/v1596282567/pixeltrue-settings-1_nmkacn.png",
     subtitle: "Hear it First, Wear it First",
     description:
       "Hating the clothes in your website? Explore hundreds of outfit ideas",
-    color: "#ff4301",
+    color: "#3282b8",
   },
   {
     title: "Excentric",
     image:
-      "https://res.cloudinary.com/dqv9mfbvt/image/upload/v1594808455/pixeltrue-icons-grow-your-money-2_hbutpk.png",
+      "https://res.cloudinary.com/dqv9mfbvt/image/upload/v1596973769/abstract-phone-purchases_ujecdw.png",
     subtitle: "Your Style, Your Way",
     description:
       "Create your individual & unique style and look amazing everyday",
@@ -39,15 +39,15 @@ const slides = [
   {
     title: "Funky",
     image:
-      "https://res.cloudinary.com/dqv9mfbvt/image/upload/v1594808530/pixeltrue-icons-building-website-2_rgubhj.png",
+      "https://res.cloudinary.com/dqv9mfbvt/image/upload/v1597223392/pixeltrue-idea_mcxuhs.png",
     subtitle: "Look Good, Feel Good",
     description:
       "Discover the latests trends in fashion and explore your personality ",
-    color: "#0779e4",
+    color: "#ff9a76",
   },
 ];
 
-const Landing = ({ navigation }: StackNavigationProp<Routes, "Landing">) => {
+const Landing = ({ navigation }: StackNavigationProps<Routes, "Landing">) => {
   const scroll = useRef<Animated.ScrollView>(null);
   const { scrollHandler, x } = useScrollHandler();
   const backgroundColor = interpolateColor(x, {
@@ -76,7 +76,7 @@ const Landing = ({ navigation }: StackNavigationProp<Routes, "Landing">) => {
 
         <Animated.View
           style={{
-            flex: 1,
+            flex: 1.5,
             flexDirection: "row",
             width: width * slides.length,
             transform: [{ translateX: multiply(x, -1) }],
@@ -89,6 +89,7 @@ const Landing = ({ navigation }: StackNavigationProp<Routes, "Landing">) => {
                 key={index}
                 onPress={() => {
                   if (last) {
+                    navigation.navigate("Welcome");
                   } else {
                     scroll.current?.getNode().scrollTo({
                       x: width * (index + 1),
@@ -120,7 +121,6 @@ const styles = StyleSheet.create({
   },
   slider: {
     height: SLIDE_HEIGHT,
-    // borderBottomRightRadius: BORDER_RADIUS,
   },
   footer: {
     flex: 1,
@@ -128,12 +128,12 @@ const styles = StyleSheet.create({
   footerContent: {
     flex: 1,
     backgroundColor: "white",
-    // borderTopLeftRadius: BORDER_RADIUS,
   },
   pagination: {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     marginBottom: 30,
+    flex: 0.3,
   },
 });

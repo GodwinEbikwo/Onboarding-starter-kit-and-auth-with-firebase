@@ -12,7 +12,7 @@ interface SlideProps {
 
 const Slide = ({ title, right, image }: SlideProps) => {
   const transform = [
-    { translateY: (SLIDE_HEIGHT - 100) / 2 - 100 },
+    { translateY: (SLIDE_HEIGHT - 100) / 2 - 175 },
     { rotate: right ? "0deg" : "0deg" },
   ];
   return (
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 250,
+    height: 275,
     resizeMode: "contain",
   },
 });
