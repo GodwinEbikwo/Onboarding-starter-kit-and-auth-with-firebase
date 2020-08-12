@@ -7,15 +7,24 @@ Illustrations used in the project can be found at [link to Icons8!](https://icon
 
 Tech stack used in this project:
 
-- Expo (God bless the team there)
+- Expo (awesome! does all the heavy lifting)
 - Formik (handling forms inputs)
 - Firebase (for authentication)
 - React native
 - Typescript
 
-Please feel free to do with it whatever you will. MIT license and all of that. if you kinda like it a star could go a long way.
+Please feel free to do with it whatever you will. MIT license and all of that. if you kinda like it , please give it a star, could go a long way for me that is.
 
 ## How to use
 
 - Fork it and then you can replace your firebase credentials to the one in the config.js file located in the authentication folder.
-- To change the texts,check the config file as well and change, text, background-color and image.
+- To change the texts, check the config file as well and change, text, background-color and image.
+
+## To do
+
+- Save users to the DB and return
+- fix some types
+
+### NOTICE
+
+feel free to create a pull request etc etc.
