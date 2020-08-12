@@ -27,4 +27,4 @@ Please feel free to do with it whatever you will. MIT license and all of that. i
 
 ### NOTICE
 
-feel free to create a pull request etc etc.
+feel free to create a pull request etc.
