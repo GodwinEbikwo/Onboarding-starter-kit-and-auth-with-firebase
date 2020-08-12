@@ -13,6 +13,10 @@ export type Routes = {
   Landing: undefined;
   Welcome: undefined;
   Login: undefined;
-  Register: undefined;
+  SignUp: undefined;
   ForgotPassword: undefined;
+};
+
+export type AppRoutes = {
+  Home: undefined;
 };

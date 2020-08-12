@@ -1,19 +1,18 @@
 import React from "react";
-import { ActivityIndicator, StyleSheet } from "react-native";
-import Wrapper from "./Wrapper";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
+import Constants from "expo-constants";
 
 export default function Spinner() {
   return (
-    <Wrapper style={styles.container}>
+    <View style={styles.container}>
       <ActivityIndicator size="small" />
-    </Wrapper>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    paddingTop: Constants.statusBarHeight,
   },
 });

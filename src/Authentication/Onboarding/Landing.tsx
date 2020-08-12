@@ -3,10 +3,10 @@ import { StyleSheet, View, Dimensions } from "react-native";
 import Slide, { SLIDE_HEIGHT } from "./Slide";
 import { interpolateColor, useScrollHandler } from "react-native-redash";
 import Animated, { multiply, divide } from "react-native-reanimated";
-import Dot from "../screen/Dot";
-import Subslide from "../screen/Subslide";
-import { StackNavigationProps, Routes } from "../components/Navigation";
-import { slides } from "../Authentication/Firebase/config";
+import Dot from "./Dot";
+import Subslide from "./Subslide";
+import { StackNavigationProps, Routes } from "../../components/Navigation";
+import { slides } from "../Firebase/config";
 
 const { width } = Dimensions.get("window");
 

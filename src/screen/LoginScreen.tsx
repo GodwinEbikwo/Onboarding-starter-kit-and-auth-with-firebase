@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View, Alert } from "react-native";
 import * as Yup from "yup";
 
 import Wrapper from "../components/Wrapper";
@@ -9,7 +9,7 @@ import FormButton from "../Authentication/Form/FormButton";
 
 import { loginWithEmail } from "../Authentication/Firebase/firebase";
 import ErrorMessage from "../Authentication/Form/ErrorMessage";
-import { AntDesign, FontAwesome, Ionicons } from "@expo/vector-icons";
+import Social from "../components/footer";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -41,36 +41,26 @@ export default function LoginScreen({ navigation }: any) {
   async function handleOnLogin(values: { email: string; password: string }) {
     const { email, password } = values;
     try {
-      await loginWithEmail(email, password);
+      loginWithEmail(email, password);
     } catch (error) {
+      Alert.alert("Error occured", error.message);
+      console.log("error.message");
       setLoginError(error.message);
     }
   }
 
   return (
-    <Wrapper style={styles.container} footer={<Social />}>
-      <View style={{ marginBottom: 20, paddingTop: 40 }}>
-        <Text
-          style={{
-            fontSize: 30,
-            fontWeight: "600",
-            color: "#333",
-            fontFamily: "Bold",
-          }}
-        >
-          Welcome Back
-        </Text>
-        <Text
-          style={{
-            fontSize: 15,
-            marginTop: 10,
-            color: "grey",
-            fontFamily: "Regular",
-          }}
-        >
-          Glad to have you back
-        </Text>
-      </View>
+    <Wrapper
+      style={styles.container}
+      footer={
+        <Social
+          label="Don't have an account, sign up"
+          onPress={() => navigation.navigate("SignUp")}
+        />
+      }
+      label="Welcome Back"
+      subtitle="Glad to have you back"
+    >
       <Form
         initialValues={{ email: "", password: "" }}
         validationSchema={validationSchema}
@@ -105,6 +95,7 @@ export default function LoginScreen({ navigation }: any) {
               Forgot Password?
             </Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             onPress={() => navigation.navigate("ForgotPassword")}
           >
@@ -139,62 +130,4 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: "Medium",
   },
-  backButton: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  iconBg: {
-    backgroundColor: "rgba(12, 13, 53, 0.05)",
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 15,
-  },
 });
-
-function Social() {
-  return (
-    <View
-      style={{
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: 10,
-      }}
-    >
-      <View
-        style={{
-          margin: 14,
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-evenly",
-        }}
-      >
-        <TouchableOpacity
-          style={styles.iconBg}
-          onPress={() => alert("not implemented yet ")}
-        >
-          <AntDesign name="google" size={24} color="black" />
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.iconBg}
-          onPress={() => alert("not implemented yet ")}
-        >
-          <FontAwesome name="facebook" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.iconBg}
-          onPress={() => alert("not implemented yet ")}
-        >
-          <Ionicons name="logo-apple" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
-
-      <Text style={{ fontFamily: "Regular", color: "#111f4d" }}>
-        Don't have an account? sign up here
-      </Text>
-    </View>
-  );
-}

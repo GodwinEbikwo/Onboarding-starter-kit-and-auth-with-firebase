@@ -7,19 +7,22 @@ if (!firebase.apps.length) {
 }
 
 interface authProps {
-  email: string;
-  password: string | number | any;
+  email: undefined;
+  password: undefined;
 }
 
 export const auth = firebase.auth();
 
-export const loginWithEmail = ({ email, password }: authProps) =>
+export const loginWithEmail = (email: string, password: string) => {
   auth.signInWithEmailAndPassword(email, password);
+};
 
-export const registerWithEmail = ({ email, password }: authProps) =>
+export const registerWithEmail = (email: string, password: string) => {
   auth.createUserWithEmailAndPassword(email, password);
+};
 
 export const logout = () => auth.signOut();
 
-export const passwordReset = ({ email }: authProps) =>
+export const passwordReset = (email: string) => {
   auth.sendPasswordResetEmail(email);
+};

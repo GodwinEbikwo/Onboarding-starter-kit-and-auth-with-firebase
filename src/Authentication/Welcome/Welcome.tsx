@@ -22,7 +22,7 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
           padding: 40,
         }}
       >
-        <Text style={styles.title}>Let's get started</Text>
+        <Text style={styles.title}>Hey, let's get started</Text>
         <Text style={styles.subtitle}>
           Login to your account below or signup for an amazing experience
         </Text>
@@ -31,7 +31,11 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
           onPress={() => navigation.navigate("Login")}
           variant="primary"
         />
-        <Button label="Sign up" onPress={() => alert("Hi")} bordered="true" />
+        <Button
+          label="Sign up"
+          onPress={() => navigation.navigate("SignUp")}
+          bordered="true"
+        />
         <Button label="Forgot password" onPress={() => alert("Hi")} />
       </View>
     </View>

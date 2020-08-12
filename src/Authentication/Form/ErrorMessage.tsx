@@ -11,21 +11,21 @@ export default function ErrorMessage({ error, visible }: errorProps) {
     return null;
   }
 
-  const errorAlert = (error: string) => {
-    Alert.alert(
-      "Error occured",
-      `${error}`,
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") },
-      ],
-      { cancelable: false }
-    );
-  };
+  // const errorAlert = (error: string) => {
+  //   Alert.alert(
+  //     "Error occured",
+  //     `${error}`,
+  //     [
+  //       {
+  //         text: "Cancel",
+  //         onPress: () => console.log("Cancel Pressed"),
+  //         style: "cancel",
+  //       },
+  //       { text: "OK", onPress: () => console.log("OK Pressed") },
+  //     ],
+  //     { cancelable: false }
+  //   );
+  // };
 
   return (
     <>
