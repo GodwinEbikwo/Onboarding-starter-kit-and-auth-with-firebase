@@ -7,8 +7,6 @@ import Form from "../Authentication/Form/Form";
 import Field from "../Authentication/Form/Field";
 import FormButton from "../Authentication/Form/FormButton";
 
-import IconButton from "../components/IconButton";
-
 import { loginWithEmail } from "../Authentication/Firebase/firebase";
 import ErrorMessage from "../Authentication/Form/ErrorMessage";
 import { AntDesign, FontAwesome, Ionicons } from "@expo/vector-icons";
